@@ -60,12 +60,20 @@ Claude：
 
 ## 安装方法
 
-### 方法一：Claude.ai（网页版 / 手机 App）
+### 方法一：OpenClaw（推荐）
 
-1. 下载 [`cycling-power-calculator.skill`](https://github.com/SweetGingerGreen/cycling-power-calculator/releases) 文件
-2. 打开 [Claude.ai](https://claude.ai)
-3. 在对话界面点击 **附件图标** → 选择 `.skill` 文件上传
-4. 上传后即可直接使用，对话中提到骑行功率/速度相关问题会自动触发
+**前提**：已安装 [OpenClaw](https://openclaw.ai)
+
+```bash
+# 克隆本仓库
+git clone https://github.com/SweetGingerGreen/cycling-power-calculator.git
+
+# 复制 OpenClaw 版 skill 到主实例
+cp cycling-power-calculator/SKILL.openclaw.md \
+   ~/.openclaw/skills/cycling-power-calculator/SKILL.md
+```
+
+安装后重启 OpenClaw，在对话中提到骑行功率/速度相关内容会自动触发（已配置 `auto_invoke: true` 和正则触发规则）。
 
 ### 方法二：Claude Code（命令行）
 
@@ -75,7 +83,7 @@ Claude：
 # 克隆本仓库
 git clone https://github.com/SweetGingerGreen/cycling-power-calculator.git
 
-# 安装 skill（将 SKILL.md 复制到 Claude Code 的 skills 目录）
+# 安装 skill
 claude skill install ./cycling-power-calculator/SKILL.md
 ```
 
@@ -85,7 +93,22 @@ claude skill install ./cycling-power-calculator/SKILL.md
 claude skill install cycling-power-calculator.skill
 ```
 
-安装后，在 Claude Code 的任意对话中提到骑行功率计算，Skill 会自动被调用。
+### 方法三：Claude.ai（网页版 / 手机 App）
+
+1. 下载 [`cycling-power-calculator.skill`](https://github.com/SweetGingerGreen/cycling-power-calculator/releases) 文件
+2. 打开 [Claude.ai](https://claude.ai)
+3. 在对话界面点击 **附件图标** → 选择 `.skill` 文件上传
+4. 上传后即可直接使用
+
+---
+
+## 文件说明
+
+| 文件 | 用途 |
+|------|------|
+| `SKILL.md` | Claude Code / Claude.ai 版本 |
+| `SKILL.openclaw.md` | OpenClaw 版本（含 `triggers` 自动触发规则） |
+| `cycling-power-calculator.skill` | 打包后的 Claude Code 安装包 |
 
 ---
 
